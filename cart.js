@@ -1,3 +1,4 @@
+"use strict"
 
 function Product(ID,Name,Price){
 
@@ -16,7 +17,7 @@ Item.prototype.UpdatePrice = function () {
     this.TotalPrice=this.Product.Price*this.Count;
 }
 
-export class Cart{
+class Cart{
 
     constructor(){
         this.items=[];
@@ -100,3 +101,8 @@ export class Cart{
 
 
 }
+module.exports = {
+    Product : Product,
+    Item:Item,
+    Cart : Cart
+  }
