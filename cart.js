@@ -6,16 +6,19 @@ function Product(ID,Name,Price){
     this.Name=Name;
     this.Price=Price;
 }
+class Item{
+    constructor (product,count){
 
-function Item (product,count){
+        this.Product=product,
+        this.Count=count;
+        this.TotalPrice=product.Price * count;
+    }
+   UpdatePrice () {
+        this.TotalPrice=this.Product.Price*this.Count;
+    }
 
-    this.Product=product,
-    this.Count=count;
-    this.TotalPrice=product.Price * count;
 }
-Item.prototype.UpdatePrice = function () {
-    this.TotalPrice=this.Product.Price*this.Count;
-}
+
 
 class Cart{
 
