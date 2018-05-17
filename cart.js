@@ -1,4 +1,3 @@
-"use strict"
 
 function Product(ID,Name,Price){
 
@@ -6,6 +5,7 @@ function Product(ID,Name,Price){
     this.Name=Name;
     this.Price=Price;
 }
+
 class Item{
     constructor (product,count){
 
@@ -18,7 +18,6 @@ class Item{
     }
 
 }
-
 
 class Cart{
 
