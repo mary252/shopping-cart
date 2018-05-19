@@ -1,0 +1,207 @@
+.product-image {
+  float: left;
+  width: 20%;
+}
+.checkout-quantity-plus{
+  float: left;
+margin-left: 10%;
+
+
+}
+.checkout-quantity-number{
+  float: left;
+margin-left: 10%;
+
+
+}
+
+.checkout-quantity-minus{
+  float: left;
+
+
+
+}
+.product-details {
+  float: left;
+  width: 37%;
+}
+.checkout-price {
+  float: left;
+  width: 37%;
+}
+
+.product-price {
+  float: left;
+  width: 12%;
+}
+
+.product-quantity {
+  float: left;
+  width: 10%;
+}
+
+.product-removal {
+  float: left;
+  width: 9%;
+}
+.checkout-quantity {
+  float: right;
+  width: 30%;
+
+}
+
+.product-line-price {
+  float: left;
+  width: 12%;
+  text-align: right;
+}
+
+.group:before, .shopping-cart:before, .column-labels:before, .product:before, .totals-item:before,
+.group:after,
+.shopping-cart:after,
+.column-labels:after,
+.product:after,
+.shopping-cart-checkout:before,
+.shopping-cart-checkout:after,
+.totals-item:after {
+  content: '';
+  display: table;
+}
+
+.group:after, .shopping-cart:after,.shopping-cart-checkout:after, .column-labels:after, .product:after, .totals-item:after {
+  clear: both;
+}
+
+.group, .shopping-cart, .column-labels, .product, .totals-item,.shopping-cart-checkout {
+  zoom: 1;
+}
+.product .product-price:before,.checkout-price:before, .product .product-line-price:before, .totals-value:before {
+  content: '$';
+}
+
+body {
+  padding: 0px 30px 30px 20px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+}
+
+h1 {
+  font-weight: 100;
+}
+
+label {
+  color: #aaa;
+}
+.remove-product-checkout {
+  border: 2px solid black;
+  padding: 4px 8px;
+  background-color: white;
+  color: black;
+  font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+  font-size: 20px;
+
+  float: right;
+}
+
+.remove-product-checkout:hover {
+  background-color: #d9d9d9;
+}
+
+.shopping-cart {
+  margin-top: -45px;
+  float: left;
+  width: 68%;
+
+}
+.shopping-cart-checkout{
+  padding-left: 10px;
+  margin-top: -45px;
+  float: right;
+  width: 30%;
+  border-left: black 3px solid;
+}
+/* Column headers */
+.column-labels label {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+.column-labels .product-image, .column-labels .product-details,.checkout-price, .column-labels .product-removal {
+  text-indent: -9999px;
+}
+
+/* Product entries */
+.product {
+  padding-top: 10px;
+
+  padding-bottom: 10px;
+  border: 2px solid #aaaaaa;
+
+}
+.product .product-image {
+  text-align: center;
+}
+.product .product-image img {
+  width: 50px;
+}
+.product .product-details .product-title,.checkout-price {
+  margin-right: 20px;
+  font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+}
+.product .product-details .product-description,.checkout-price {
+  margin: 5px 20px 5px 0;
+  line-height: 1.4em;
+}
+
+.product .remove-product {
+  border: 2px solid black;
+  padding: 4px 8px;
+  background-color: white;
+  color: black;
+  font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+  font-size: 12px;
+
+}
+.product .remove-product:hover {
+  background-color: #d9d9d9;
+}
+
+/* Totals section */
+.totals .totals-item {
+  margin-top: 10%;
+  float: right;
+  clear: both;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.totals .totals-item label {
+  float: left;
+  clear: both;
+  width: 79%;
+  text-align: right;
+}
+.totals .totals-item .totals-value {
+  float: right;
+  width: 21%;
+  text-align: right;
+}
+.totals .totals-item-total {
+  font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+}
+
+.checkout {
+  float: right;
+  border: 2px solid black;
+  margin-top: 20px;
+  padding: 6px 25px;
+  background-color: white;
+  color: black;
+  font-size: 25px;
+
+}
+
+.checkout:hover {
+  background-color: #d9d9d9;
+}
+
+

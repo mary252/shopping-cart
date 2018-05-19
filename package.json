@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/mary252/shopping-cart/issues"
   },
-  "homepage": "https://github.com/mary252/shopping-cart#readme"
+  "homepage": "https://github.com/mary252/shopping-cart#readme",
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
 }

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Responsive Shopping Cart</title>
+   
+      <link rel="stylesheet" href="style.css">
+
+  
+</head>
+
+<body>
+
+  <h1>Shopping Cart</h1>
+
+<div id="ItemList" class="shopping-cart">
+
+  <div class="column-labels">
+    <label class="product-image">Image</label>
+    <label class="product-details">Product</label>
+    <label class="product-price">Price</label>
+    <label class="product-removal">Add</label>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="https://s.cdpn.io/3/dingo-dog-bones.jpg">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Dingo Dog Bones</div>
+      <p class="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.</p>
+    </div>
+    <div class="product-price">12.99</div>
+
+    <div class="product-removal">
+      <button class="remove-product">
+        Add to cart
+      </button>
+    </div>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="https://s.cdpn.io/3/large-NutroNaturalChoiceAdultLambMealandRiceDryDogFood.png">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Nutro™ Adult Lamb and Rice Dog Food</div>
+      <p class="product-description">Who doesn't like lamb and rice? We've all hit the halal cart at 3am while quasi-blackout after a night of binge drinking in Manhattan. Now it's your dog's turn!</p>
+    </div>
+    <div class="product-price">45.99</div>
+
+    <div class="product-removal">
+      <button class="remove-product">
+        Add to Cart
+      </button>
+    </div>
+
+  </div>
+
+
+</div>
+
+  <div class="shopping-cart-checkout">
+      <div class="column-labels">
+          <label class="product-price" style="font-size: 30px; padding-left: 10px">Items</label>
+          <button class="remove-product-checkout">
+              clear
+          </button>
+          <div class="product-removal">
+
+          </div>
+      </div>
+
+      <div class="product">
+          <div class="product-image">
+              <img src="https://s.cdpn.io/3/dingo-dog-bones.jpg">
+          </div>
+          <div class="product-details">
+              <div class="product-title">Dingo Dog Bones</div>
+              <p class="product-description">$12.99</p>
+          </div>
+          <div class="checkout-quantity">
+              <div class="checkout-quantity-minus">
+                  <button class="remove-product">
+                      -
+                  </button>
+              </div>
+
+             <div class="checkout-quantity-number">
+                 1
+             </div>
+
+              <div class="checkout-quantity-plus">
+                  <button class="remove-product">
+                      +
+                  </button>
+              </div>
+          </div>
+      </div>
+
+      <div class="product">
+          <div class="product-image">
+              <img src="https://s.cdpn.io/3/large-NutroNaturalChoiceAdultLambMealandRiceDryDogFood.png">
+          </div>
+          <div class="product-details">
+              <div class="product-title">Nutro™ Adult Lamb and Rice Dog Food</div>
+              <p class="product-description"> $45.99  </p>
+          </div>
+
+          <div class="checkout-quantity">
+              <div class="checkout-quantity-minus">
+                  <button class="remove-product">
+                      -
+                  </button>
+              </div>
+
+              <div class="checkout-quantity-number">
+                  1
+              </div>
+
+              <div class="checkout-quantity-plus">
+                  <button class="remove-product">
+                      +
+                  </button>
+              </div>
+          </div>
+      </div>
+
+      <div class="totals">
+          <div class="totals-item">
+              <label>total</label>
+              <div class="totals-value" id="cart-subtotal">71.97</div>
+          </div>
+      </div>
+
+      <button class="checkout">Checkout</button>
+
+  </div>
+    <script src="index.js"></script>
+
+
+
+
+</body>
+
+</html>
