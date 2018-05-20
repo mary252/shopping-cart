@@ -29,10 +29,10 @@
 
 </div>
 
-  <div class="shopping-cart-checkout">
+  <div id="items" class="shopping-cart-checkout">
       <div class="column-labels">
           <label class="product-price" style="font-size: 30px; padding-left: 10px">Items</label>
-          <button class="remove-product-checkout">
+          <button id="clear" class="remove-product-checkout" onclick="clear()">
               clear
           </button>
           <div class="product-removal">
@@ -40,71 +40,18 @@
           </div>
       </div>
 
-      <div class="product">
-          <div class="product-image">
-              <img src="https://s.cdpn.io/3/dingo-dog-bones.jpg">
-          </div>
-          <div class="product-details">
-              <div class="product-title">Dingo Dog Bones</div>
-              <p class="product-description">$12.99</p>
-          </div>
-          <div class="checkout-quantity">
-              <div class="checkout-quantity-minus">
-                  <button class="remove-product">
-                      -
-                  </button>
-              </div>
-
-             <div class="checkout-quantity-number">
-                 1
-             </div>
-
-              <div class="checkout-quantity-plus">
-                  <button class="remove-product">
-                      +
-                  </button>
-              </div>
-          </div>
-      </div>
-
-      <div class="product">
-          <div class="product-image">
-              <img src="https://s.cdpn.io/3/large-NutroNaturalChoiceAdultLambMealandRiceDryDogFood.png">
-          </div>
-          <div class="product-details">
-              <div class="product-title">Nutro™ Adult Lamb and Rice Dog Food</div>
-              <p class="product-description"> $45.99  </p>
-          </div>
-
-          <div class="checkout-quantity">
-              <div class="checkout-quantity-minus">
-                  <button class="remove-product">
-                      -
-                  </button>
-              </div>
-
-              <div class="checkout-quantity-number">
-                  1
-              </div>
-
-              <div class="checkout-quantity-plus">
-                  <button class="remove-product">
-                      +
-                  </button>
-              </div>
-          </div>
-      </div>
-
+  </div>
       <div class="totals">
           <div class="totals-item">
               <label>total</label>
-              <div class="totals-value" id="cart-subtotal">71.97</div>
+              <div class="totals-value" id="cart-total">0</div>
           </div>
+          <button id="checkout" class="checkout" >Checkout</button>
       </div>
 
-      <button class="checkout">Checkout</button>
 
-  </div>
+
+
     <script src="bundle.js"></script>
 
 

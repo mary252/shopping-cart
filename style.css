@@ -111,14 +111,15 @@ label {
   margin-top: -45px;
   float: left;
   width: 68%;
-
+  border-right: black 3px solid;
+  padding-right: 10px;
 }
 .shopping-cart-checkout{
   padding-left: 10px;
   margin-top: -45px;
   float: right;
   width: 30%;
-  border-left: black 3px solid;
+
 }
 /* Column headers */
 .column-labels label {
@@ -167,6 +168,9 @@ label {
 }
 
 /* Totals section */
+.totals{
+  float: right;
+}
 .totals .totals-item {
   margin-top: 10%;
   float: right;
