@@ -185,7 +185,7 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 },{}],2:[function(require,module,exports){
-const localforage=require('localforage');
+
 function Product(ID,Name,Price){
 
     this.ID=ID;
@@ -203,35 +203,15 @@ class Item{
    UpdatePrice () {
         this.TotalPrice=this.Product.Price*this.Count;
     }
-
 }
 
 class Cart {
 
     constructor(){
         this.items=[];
-
-        if(localforage.length()!=0){
-
-            this.items=this.getData();
-           //this.items.push(NewItems);
-           console.log(this.items);
-           //console.log(this.items);
-        }
-
-
-
-        //
     }
-    async getData(){
 
-        await localforage.getItem('Cart', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
 
-           return value;
-        });
-    }
      // returns all items in the cart
     GetItems(){
         return this.items;
@@ -254,18 +234,13 @@ class Cart {
             if(product.ID==this.items[i].Product.ID){
                 this.items[i].Count++;
                 this.items[i].UpdatePrice();
-                this.saveData();
                 return;
             }
         }
         var ItemToAdd=new Item(product,1);
         this.items.push(ItemToAdd);
-        this.saveData();
     }
-    saveData(){
-        localforage.clear();
-        localforage.setItem('Cart', this.items);
-    }
+
     // decrement the count of the item containing the product or removes it.
     RemoveItem(product){
         for(let i=0;i<this.items.length;i++){
@@ -321,10 +296,12 @@ module.exports = {
     Cart : Cart
   }
 
-},{"localforage":30}],3:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 const axios=require('axios');
 const CartService =require('./cart');
+const localforage=require('localforage');
 const Cart=new CartService.Cart();
+getData();
 document.onload=load();
 function load(){
     axios.get('https://faker-api-yczfsfkfcd.now.sh/api/products' )
@@ -365,7 +342,7 @@ function load(){
                     let add=document.createElement('BUTTON');
                     add.classList.add('remove-product');
                     add.innerHTML='add to cart';
-
+                    add.style="width:100px;height:30px;";
                     let ToAdd=new CartService.Product(data[i].id,data[i].title,data[i].price);
                     add .id=data[i].id;
                     add.onclick=() => { AddToCart(ToAdd,data[i].image)};
@@ -380,9 +357,8 @@ function load(){
             //console.log('loaded'); // ex.: 200
             let Items=Cart.GetItems();
             if(Items.length!=0){
-                console.log('heree');
                 for(let i=0;i<Items.length;i++){
-                    AddCartItem(Cart.items[i].Product,data[0].image);
+                    AddCartItem(Cart.items[i].Product,data[0].image,Cart.items[i].Count);
                 }
             }
         });
@@ -392,12 +368,12 @@ function  AddToCart(ToAdd,ImageToAdd){
     let HasProduct=Cart.HasProduct(ToAdd);
     if(HasProduct===false){
         Cart.AddItem(ToAdd);
-
-        AddCartItem(ToAdd,ImageToAdd);
+        saveData();
+        AddCartItem(ToAdd,ImageToAdd,1);
     }
 
 }
-function AddCartItem(ToAdd,ImageToAdd) {
+function AddCartItem(ToAdd,ImageToAdd,Count) {
     let product=document.createElement('DIV');
     product.classList.add('product');
     product.id='item'+ToAdd.ID;
@@ -416,6 +392,7 @@ function AddCartItem(ToAdd,ImageToAdd) {
     product_title.innerHTML=ToAdd.Name;
     let product_description=document.createElement('P');
     product_description.classList.add('product-description)');
+    product_description.style="color:#2f59d6";
     product_description.innerHTML='$'+ToAdd.Price;
     product_details.appendChild(product_title);
     product_details.appendChild(product_description);
@@ -435,7 +412,7 @@ function AddCartItem(ToAdd,ImageToAdd) {
 
     let CheckoutQuantityNumber=document.createElement('div');
     CheckoutQuantityNumber.classList.add('checkout-quantity-number');
-    CheckoutQuantityNumber.innerHTML='1';
+    CheckoutQuantityNumber.innerHTML=Count;
     CheckoutQuantityNumber.id='Quantity'+ToAdd.ID;
     CheckoutQuantity.appendChild(CheckoutQuantityNumber);
 
@@ -454,18 +431,17 @@ function AddCartItem(ToAdd,ImageToAdd) {
 }
 
 function RemoveItem(Product) {
-    console.log('aaa')
+
     Cart.RemoveItem(Product);
+    saveData();
     let CheckoutQuantityNumber=document.getElementById('Quantity'+Product.ID);
     let Quantity=Number(CheckoutQuantityNumber.innerHTML);
     Quantity--;
     if(Quantity===0){
         document.getElementById('item'+Product.ID).remove();
-        console.log('here')
     }
     else{
         CheckoutQuantityNumber.innerHTML=Quantity ;
-        console.log('heee')
     }
 
 
@@ -473,6 +449,7 @@ function RemoveItem(Product) {
 
 function AddItem(product) {
     Cart.AddItem(product);
+    saveData();
     let CheckoutQuantityNumber=document.getElementById('Quantity'+product.ID);
     let Quantity=Number(CheckoutQuantityNumber.innerHTML);
     CheckoutQuantityNumber.innerHTML=Quantity +1;
@@ -490,9 +467,27 @@ function Clear() {
         document.getElementById('item'+Product.ID).remove();
     }
     Cart.ClearCart();
+    saveData();
     document.getElementById('cart-total').innerHTML='0';
 }
-},{"./cart":2,"axios":4}],4:[function(require,module,exports){
+function saveData() {
+    localforage.clear();
+    localforage.setItem('items', Cart.GetItems());
+}
+
+function getData() {
+
+    localforage.getItem('items').then(function (data) {
+        for(let i=0;i<data.length;i++){
+            let product=data[i].Product;
+            let Count=data[i].Count;
+            let item=new CartService.Item(product,Count);
+            Cart.items.push(item);
+        }
+    });
+
+}
+},{"./cart":2,"axios":4,"localforage":30}],4:[function(require,module,exports){
 module.exports = require('./lib/axios');
 },{"./lib/axios":6}],5:[function(require,module,exports){
 (function (process){

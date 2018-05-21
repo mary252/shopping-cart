@@ -1,4 +1,4 @@
-const localforage=require('localforage');
+
 function Product(ID,Name,Price){
 
     this.ID=ID;
@@ -16,34 +16,15 @@ class Item{
    UpdatePrice () {
         this.TotalPrice=this.Product.Price*this.Count;
     }
-
 }
 
 class Cart {
 
     constructor(){
         this.items=[];
-
-        if(localforage.length()!=0){
-
-            //this.items=this.getData();
-           //this.items.push(NewItems);
-           console.log(this.items);
-           //console.log(this.items);
-        }
-
-
-
-        //
     }
-    async getData(){
 
-        localforage.getItem('Cart', function(err, value) {
-            // Run this code once the value has been
-            // loaded from the offline store.
 
-        });
-    }
      // returns all items in the cart
     GetItems(){
         return this.items;
@@ -66,18 +47,13 @@ class Cart {
             if(product.ID==this.items[i].Product.ID){
                 this.items[i].Count++;
                 this.items[i].UpdatePrice();
-                this.saveData();
                 return;
             }
         }
         var ItemToAdd=new Item(product,1);
         this.items.push(ItemToAdd);
-        this.saveData();
     }
-    saveData(){
-        localforage.clear();
-        localforage.setItem('Cart', this.items);
-    }
+
     // decrement the count of the item containing the product or removes it.
     RemoveItem(product){
         for(let i=0;i<this.items.length;i++){

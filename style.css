@@ -33,6 +33,7 @@ margin-left: 10%;
 .product-price {
   float: left;
   width: 12%;
+  color: #2f59d6;
 }
 
 .product-quantity {
@@ -83,6 +84,7 @@ body {
   padding: 0px 30px 30px 20px;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 100;
+
 }
 
 h1 {
@@ -93,10 +95,10 @@ label {
   color: #aaa;
 }
 .remove-product-checkout {
-  border: 2px solid black;
+  border: 2px solid #ffffff;
   padding: 4px 8px;
-  background-color: white;
-  color: black;
+  background-color: #2f59d6;
+  color: #ffffff;
   font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
   font-size: 20px;
 
@@ -104,7 +106,7 @@ label {
 }
 
 .remove-product-checkout:hover {
-  background-color: #d9d9d9;
+  background-color: #305ff5;
 }
 
 .shopping-cart {
@@ -113,6 +115,7 @@ label {
   width: 68%;
   border-right: black 3px solid;
   padding-right: 10px;
+  padding-bottom: 50px;
 }
 .shopping-cart-checkout{
   padding-left: 10px;
@@ -188,6 +191,7 @@ label {
   float: right;
   width: 21%;
   text-align: right;
+  color: #2f59d6;
 }
 .totals .totals-item-total {
   font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
@@ -195,17 +199,17 @@ label {
 
 .checkout {
   float: right;
-  border: 2px solid black;
+  border: 2px solid #ffffff;
   margin-top: 20px;
   padding: 6px 25px;
-  background-color: white;
-  color: black;
+  background-color: #2f59d6;
+  color: #ffffff;
   font-size: 25px;
 
 }
 
 .checkout:hover {
-  background-color: #d9d9d9;
+  background-color: #305ff5;
 }
 
 
