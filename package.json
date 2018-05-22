@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "browserify":"browserify index.js -o bundle.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,10 @@
   "homepage": "https://github.com/mary252/shopping-cart#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "browserify": "^16.2.2",
     "localforage": "^1.7.1"
+  },
+  "devDependencies": {
+    "browserify": "^16.2.2"
   }
 }

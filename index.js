@@ -61,6 +61,7 @@ function load(){
                 for(let i=0;i<Items.length;i++){
                     AddCartItem(Cart.items[i].Product,data[0].image,Cart.items[i].Count);
                 }
+                Checkout();
             }
         });
 
@@ -72,7 +73,7 @@ function  AddToCart(ToAdd,ImageToAdd){
         saveData();
         AddCartItem(ToAdd,ImageToAdd,1);
     }
-
+    Checkout();
 }
 function AddCartItem(ToAdd,ImageToAdd,Count) {
     let product=document.createElement('DIV');
@@ -145,7 +146,7 @@ function RemoveItem(Product) {
         CheckoutQuantityNumber.innerHTML=Quantity ;
     }
 
-
+    Checkout();
 }
 
 function AddItem(product) {
@@ -154,6 +155,7 @@ function AddItem(product) {
     let CheckoutQuantityNumber=document.getElementById('Quantity'+product.ID);
     let Quantity=Number(CheckoutQuantityNumber.innerHTML);
     CheckoutQuantityNumber.innerHTML=Quantity +1;
+    Checkout();
 }
 
 function Checkout() {
@@ -170,6 +172,7 @@ function Clear() {
     Cart.ClearCart();
     saveData();
     document.getElementById('cart-total').innerHTML='0';
+    Checkout();
 }
 function saveData() {
     localforage.clear();
