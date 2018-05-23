@@ -12,22 +12,21 @@
 
 <body>
 
-  <h1>Shopping Cart</h1>
+
+<div class="banner">
+    <img id="cart-icon" class="cart-image" onclick="toggle()" src="assests/CheckoutIcon.png">
+    <p class="title">Shop</p>
+</div>
+
 
 <div id="cart" class="shopping-cart">
 
-  <div class="column-labels">
-    <label class="product-image">Image</label>
-    <label class="product-details">Product</label>
-    <label class="product-price">Price</label>
-    <label class="product-removal">Add</label>
-  </div>
-
-
-  </div>
 
 
 </div>
+
+
+
 
   <div id="items" class="shopping-cart-checkout">
       <div class="column-labels">
@@ -41,7 +40,7 @@
       </div>
 
   </div>
-      <div class="totals">
+      <div id="total" class="totals">
           <div class="totals-item">
               <label>total</label>
               <div class="totals-value" id="cart-total">0</div>

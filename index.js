@@ -2,13 +2,15 @@ const axios=require('axios');
 const CartService =require('./cart');
 const localforage=require('localforage');
 const Cart=new CartService.Cart();
+window.onresize=()=>{CheckSize()} ;
+let Toggle=[true,true];
 getData();
 document.onload=load();
 function load(){
+    //console.log(document.body.clientWidth);
     axios.get('https://faker-api-yczfsfkfcd.now.sh/api/products' )
         .then(function(response){
             let data=response.data.data;
-
                 for(let i=0;i<data.length;i++){
                     let product=document.createElement('DIV');
                     product.classList.add('product');
@@ -27,7 +29,7 @@ function load(){
                     product_title.classList.add('product-title');
                     product_title.innerHTML=data[i].title;
                     let product_description=document.createElement('P');
-                    product_description.classList.add('product-description)');
+                    product_description.classList.add('product-description');
                     product_description.innerHTML=data[i].description;
                     product_details.appendChild(product_title);
                     product_details.appendChild(product_description);
@@ -55,7 +57,7 @@ function load(){
 
             document.getElementById("checkout").onclick=()=>{Checkout()};
             document.getElementById('clear').onclick=()=>{Clear()};
-            //console.log('loaded'); // ex.: 200
+            document.getElementById('cart-icon').onclick=()=>{toggle()};
             let Items=Cart.GetItems();
             if(Items.length!=0){
                 for(let i=0;i<Items.length;i++){
@@ -174,6 +176,8 @@ function Clear() {
     document.getElementById('cart-total').innerHTML='0';
     Checkout();
 }
+
+
 function saveData() {
     localforage.clear();
     localforage.setItem('items', Cart.GetItems());
@@ -190,4 +194,56 @@ function getData() {
         }
     });
 
+}
+
+
+function toggle() {
+    let ItemsDiv=document.getElementById("items");
+    if(document.body.clientWidth<=700){
+        if(ItemsDiv.offsetParent==null){
+            Toggle[0]=false;
+        }
+        else {
+            Toggle[0]=true;
+        }
+    }else{
+        if(ItemsDiv.offsetParent==null){
+            Toggle[1]=true;
+        }else{
+            Toggle[1]=false;
+        }
+    }
+    CheckSize()
+}
+function CheckSize() {
+    let CartDiv=document.getElementById('cart');
+    let ItemsDiv=document.getElementById("items");
+    let TotalDiv=document.getElementById('total');
+    if(document.body.clientWidth>670){
+        CartDiv.style.display='block';
+        if(Toggle[1]==true){
+            CartDiv.style="width: 65%; border-right: black 3px solid;";
+            ItemsDiv.style.display="block";
+            TotalDiv.style.display='block';
+        }
+        else {
+            CartDiv.style="width: 100%; border-right: none;";
+            ItemsDiv.style.display="none";
+            TotalDiv.style.display='none';
+        }
+    }
+    else{
+        CartDiv.style="width: 100%; border-right: none;";
+        if(Toggle[0]==true){
+            ItemsDiv.style.display='none';
+            CartDiv.style.display='block';
+            TotalDiv.style.display='none';
+        }
+        else {
+            CartDiv.style.display="none";
+            ItemsDiv.style.display="block";
+            TotalDiv.style.display='block';
+        }
+
+    }
 }
